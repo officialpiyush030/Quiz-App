@@ -94,7 +94,7 @@ function selectans(buttn,correct){
     const anyselected=Array.from(ans.children).some(btn=>btn.disabled);
     if(!anyselected){
         alert("Please select any answer");
-        next.innerHTML="none";
+        return;
     }
     if (next.innerHTML === "Play Again") {
         startquiz();
@@ -105,6 +105,4 @@ function selectans(buttn,correct){
         showscore();
     }
 });
-
-
 startquiz();
