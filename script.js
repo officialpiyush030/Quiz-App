@@ -91,18 +91,25 @@ function selectans(buttn,correct){
 
     }
     next.addEventListener("click", () => {
-    const anyselected=Array.from(ans.children).some(btn=>btn.disabled);
+    // First, check if it's Play Again
+    if (next.innerHTML === "Play Again") {
+        startquiz();
+        return; // don't check selection here
+    }
+
+    // Then check if any option is selected for normal next
+    const anyselected = Array.from(ans.children).some(btn => btn.disabled);
     if(!anyselected){
         alert("Please select any answer");
         return;
     }
-    if (next.innerHTML === "Play Again") {
-        startquiz();
-    } else if (currqueindex < questions.length - 1) {
+
+    if (currqueindex < questions.length - 1) {
         currqueindex++;
         showque();
     } else {
         showscore();
     }
 });
+
 startquiz();
